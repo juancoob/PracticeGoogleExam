@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">PracticeGoogleExam</string>
+
+    <!-- main activity -->
+    <string name="write_something">Write something</string>
 </resources>

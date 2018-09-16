@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PracticeGoogleExam</string>
+
+    <!-- main activity -->
+    <string name="write_something">לכתוב משהו</string>
+</resources>
