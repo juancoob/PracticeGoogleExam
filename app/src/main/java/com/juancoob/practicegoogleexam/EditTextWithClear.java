@@ -94,8 +94,7 @@ public class EditTextWithClear extends android.support.v7.widget.AppCompatEditTe
                         if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                             mClearButtonImage = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_clear_opaque_24dp, null);
                             // Clear text and hide button
-                            getText().clear();
-                            hideClearButtom();
+                            performClick();
                             return true;
                         }
                     } else {
@@ -115,5 +114,11 @@ public class EditTextWithClear extends android.support.v7.widget.AppCompatEditTe
         setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
     }
 
-
+    @Override
+    public boolean performClick() {
+        super.performClick();
+        getText().clear();
+        hideClearButtom();
+        return true;
+    }
 }
