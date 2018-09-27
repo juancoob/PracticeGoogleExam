@@ -4,4 +4,7 @@
 
     <!-- main activity -->
     <string name="write_something">לכתוב משהו</string>
+
+    <!-- detail activity -->
+    <string name="hello_world">שלום עולם</string>
 </resources>

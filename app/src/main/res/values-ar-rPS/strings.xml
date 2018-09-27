@@ -4,4 +4,7 @@
 
     <!-- main activity -->
     <string name="write_something">write something</string>
+
+    <!-- detail activity -->
+    <string name="hello_world">Hello world</string>
 </resources>
