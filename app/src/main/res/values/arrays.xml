@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fab_colors_labels">
+        <item>@string/pref_change_fab_color_default_label</item>
+        <item>@string/pref_change_fab_color_red_label</item>
+    </array>
+
+    <array name="fab_colors_values">
+        <item>@string/pref_change_fab_color_default_value</item>
+        <item>@string/pref_change_fab_color_red_value</item>
+    </array>
+</resources>
