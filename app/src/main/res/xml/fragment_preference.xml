@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_image"
+        android:key="@string/pref_show_image_key"
+        android:summaryOff="@string/pref_show_image_false"
+        android:summaryOn="@string/pref_show_image_true"
+        android:title="@string/pref_show_image_title" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_show_hint_value"
+        android:key="@string/pref_show_hint_key"
+        android:title="@string/pref_show_hint_title" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_change_fab_color_default_value"
+        android:entries="@array/fab_colors_labels"
+        android:entryValues="@array/fab_colors_values"
+        android:key="@string/pref_change_fab_color_key"
+        android:title="@string/pref_change_fab_color_title" />
+
+</PreferenceScreen>
