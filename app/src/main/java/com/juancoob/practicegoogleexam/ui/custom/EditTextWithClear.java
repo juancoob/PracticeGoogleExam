@@ -1,4 +1,4 @@
-package com.juancoob.practicegoogleexam;
+package com.juancoob.practicegoogleexam.ui.custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.juancoob.practicegoogleexam.R;
 
 /**
  * Original example: https://google-developer-training.github.io/android-developer-advanced-course-practicals/unit-5-advanced-graphics-and-views/lesson-10-custom-views/10-1a-p-using-custom-views/10-1a-p-using-custom-views.html
