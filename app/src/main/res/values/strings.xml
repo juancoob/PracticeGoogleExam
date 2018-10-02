@@ -6,4 +6,29 @@
 
     <!-- detail activity -->
     <string name="hello_world">Hello world</string>
+
+    <!-- setings menu -->
+    <string name="settings">Settings</string>
+
+    <!-- sample text -->
+    <string name="sample_image">sample image</string>
+
+    <!-- preferences -->
+    <string name="pref_show_image_key" translatable="false">show_image</string>
+    <string name="pref_show_image_false">Hidden</string>
+    <string name="pref_show_image_true">Shown</string>
+    <string name="pref_show_image_title">Show image</string>
+
+    <string name="pref_show_hint_value">@string/write_something</string>
+    <string name="pref_show_hint_key" translatable="false">show_hint</string>
+    <string name="pref_show_hint_title">Show EditText hint</string>
+
+    <string name="pref_change_fab_color_default_value">colorAccent</string>
+    <string name="pref_change_fab_color_red_value">red</string>
+    <string name="pref_change_fab_color_default_label">Color accent</string>
+    <string name="pref_change_fab_color_red_label">Red</string>
+    <string name="pref_change_fab_color_key" translatable="false">change_color</string>
+    <string name="pref_change_fab_color_title">Change FAB color</string>
+
+    <string name="pref_no_hint_error">Please, add a hint</string>
 </resources>
