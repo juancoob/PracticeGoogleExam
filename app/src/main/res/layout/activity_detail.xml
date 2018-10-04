@@ -10,7 +10,7 @@
         android:id="@+id/tv_hello_world"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="@dimen/zero"
-        android:layout_height="@dimen/zero"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/hello_world"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,5 +19,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_counter"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/counter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hello_world" />
 
 </android.support.constraint.ConstraintLayout>
