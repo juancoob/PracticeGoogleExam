@@ -17,5 +17,14 @@ public abstract class Constants {
     public static final String ACTION_INCREMENT_COUNT = "incrementCount";
     public static final String ACTION_DISMISS = "dismiss";
     public static final String ACTION_NOTIFICATION_REMINDER = "notificationReminder";
+    public static final String REMINDER_NOTIFICATION_CHANNEL_ID = "123";
+    public static final int REMINDER_PENDING_INTENT_ID = 456;
+    public static final int REMINDER_PENDING_INTENT_DISMISS_ID = 789;
+    public static final int REMINDER_PENDING_INTENT_INCREMENT_ID = 12;
+    public static final int REMINDER_NOTIFICATION_ID = 34;
+
+    // Sharedpreferences
+    public static final String INCREMENT_KEY = "incrementKey";
+    public static final int DEFAULT_INCREMENT_VALUE = 0;
 
 }
