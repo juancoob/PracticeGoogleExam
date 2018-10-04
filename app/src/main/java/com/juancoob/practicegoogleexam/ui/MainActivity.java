@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.juancoob.practicegoogleexam.R;
 import com.juancoob.practicegoogleexam.ui.custom.EditTextWithClear;
+import com.juancoob.practicegoogleexam.util.ReminderFirebaseJobDispatcher;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupSharedPreferences();
+        // Init the job scheduler
+        ReminderFirebaseJobDispatcher.scheduleChargingReminder(this);
     }
 
     public void setupSharedPreferences() {
