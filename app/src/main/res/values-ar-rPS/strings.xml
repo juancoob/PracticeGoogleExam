@@ -7,6 +7,7 @@
 
     <!-- detail activity -->
     <string name="hello_world">Hello world</string>
+    <string name="counter">Counter: %1$d</string>
 
     <!-- setings menu -->
     <string name="settings">Settings</string>
@@ -29,5 +30,12 @@
     <string name="pref_change_fab_color_title">Change FAB color</string>
 
     <string name="pref_no_hint_error">Please, add a hint</string>
+
+    <!-- notifications-->
+    <string name="notification_channel_name">notification</string>
+    <string name="notification_title">Increment game!</string>
+    <string name="notification_message">Do you want to increment the number?</string>
+    <string name="notification_option_agree">Yes, of course</string>
+    <string name="notification_option_dismiss">No</string>
 
 </resources>
