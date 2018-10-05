@@ -40,5 +40,7 @@
     <string name="notification_option_agree">Yes, of course</string>
     <string name="notification_option_dismiss">No</string>
 
+    <!-- dummy text -->
+    <string name="dummy_text" translatable="false">Dummy text</string>
 
 </resources>
