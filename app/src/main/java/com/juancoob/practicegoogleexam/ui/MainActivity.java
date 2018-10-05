@@ -1,20 +1,28 @@
 package com.juancoob.practicegoogleexam.ui;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.juancoob.practicegoogleexam.R;
+import com.juancoob.practicegoogleexam.ViewModel.MainViewModel;
+import com.juancoob.practicegoogleexam.ViewModel.ViewModelFactory;
 import com.juancoob.practicegoogleexam.ui.custom.EditTextWithClear;
 import com.juancoob.practicegoogleexam.util.ReminderFirebaseJobDispatcher;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @BindView(R.id.iv_sample)
     public ImageView sampleImageView;
 
+    @BindView(R.id.tv_countries_number)
+    public TextView countriesNumberTextView;
+
+    private ViewModelFactory mViewModelFactory;
+    private MainViewModel mMainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         setupSharedPreferences();
         // Init the job scheduler
         ReminderFirebaseJobDispatcher.scheduleChargingReminder(this);
+        // Init ViewmodelFactory
+        mViewModelFactory = new ViewModelFactory();
+        mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel.class);
+        setCountries();
+        mMainViewModel.countCountryList(this);
     }
 
     public void setupSharedPreferences() {
@@ -100,6 +118,20 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private void manageEditText(SharedPreferences sharedPreferences) {
         customEditTextWithClear.setHint(sharedPreferences.getString(getString(R.string.pref_show_hint_key),
                 getString(R.string.write_something)));
+    }
+
+    public void setCountries() {
+
+        mMainViewModel.getCountryList().observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(@Nullable List<String> countryList) {
+                int size = countryList != null ? countryList.size() : 0;
+                String value = getResources().getQuantityString(R.plurals.country_number, size, size);
+                countriesNumberTextView.setText(value);
+            }
+        });
+
+
     }
 
     @Override
