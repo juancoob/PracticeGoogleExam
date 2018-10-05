@@ -35,6 +35,9 @@ dependencies {
     // FirebaseJobScheduler
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
 
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
     // Testing
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.hamcrest:hamcrest-library:$hamcrest_library_version"
