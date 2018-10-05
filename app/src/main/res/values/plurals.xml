@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="country_number">
+        <item quantity="zero">There are no countries!</item>
+        <item quantity="one">There are %d country</item>
+        <item quantity="other">There are %d countries</item>
+    </plurals>
+</resources>
