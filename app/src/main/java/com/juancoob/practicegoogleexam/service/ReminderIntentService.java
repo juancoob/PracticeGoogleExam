@@ -8,10 +8,10 @@ import com.juancoob.practicegoogleexam.util.ReminderTasks;
 /**
  * Created by Juan Antonio Cobos Obrero on 3/10/18.
  */
-public class ReminderFirebaseIntentService extends IntentService {
+public class ReminderIntentService extends IntentService {
 
-    public ReminderFirebaseIntentService() {
-        super("ReminderFirebaseIntentService");
+    public ReminderIntentService() {
+        super("ReminderIntentService");
     }
 
     @Override

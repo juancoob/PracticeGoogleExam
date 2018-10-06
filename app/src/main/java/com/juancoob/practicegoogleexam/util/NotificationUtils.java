@@ -14,7 +14,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.juancoob.practicegoogleexam.R;
-import com.juancoob.practicegoogleexam.service.ReminderFirebaseIntentService;
+import com.juancoob.practicegoogleexam.service.ReminderIntentService;
 import com.juancoob.practicegoogleexam.ui.MainActivity;
 
 /**
@@ -74,7 +74,7 @@ public class NotificationUtils {
     }
 
     private static NotificationCompat.Action ignoreReminderAction(Context context) {
-        Intent ignoreIntent = new Intent(context, ReminderFirebaseIntentService.class);
+        Intent ignoreIntent = new Intent(context, ReminderIntentService.class);
         ignoreIntent.setAction(Constants.ACTION_DISMISS);
         PendingIntent pendingIntent = PendingIntent.getService(context,
                 Constants.REMINDER_PENDING_INTENT_DISMISS_ID, ignoreIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -82,7 +82,7 @@ public class NotificationUtils {
     }
 
     private static NotificationCompat.Action incrementNumber(Context context) {
-        Intent incrementIntent = new Intent(context, ReminderFirebaseIntentService.class);
+        Intent incrementIntent = new Intent(context, ReminderIntentService.class);
         incrementIntent.setAction(Constants.ACTION_INCREMENT_COUNT);
         PendingIntent pendingIntent = PendingIntent.getService(context,
                 Constants.REMINDER_PENDING_INTENT_INCREMENT_ID, incrementIntent, PendingIntent.FLAG_UPDATE_CURRENT);
