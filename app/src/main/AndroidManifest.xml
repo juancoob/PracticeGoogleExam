@@ -34,16 +34,13 @@
         </activity>
 
         <service
-            android:name=".service.ReminderFirebaseIntentService"
+            android:name=".service.ReminderIntentService"
             android:exported="false" />
 
         <service
-            android:name=".service.ReminderFirebaseJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
+            android:name=".service.ReminderJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
     </application>
 
 </manifest>
