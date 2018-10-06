@@ -1,7 +1,10 @@
 package com.juancoob.practicegoogleexam.ui;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -20,8 +23,9 @@ import com.juancoob.practicegoogleexam.R;
 import com.juancoob.practicegoogleexam.ViewModel.MainViewModel;
 import com.juancoob.practicegoogleexam.ViewModel.ViewModelFactory;
 import com.juancoob.practicegoogleexam.data.Country;
+import com.juancoob.practicegoogleexam.service.ReminderJobService;
 import com.juancoob.practicegoogleexam.ui.custom.EditTextWithClear;
-import com.juancoob.practicegoogleexam.util.ReminderFirebaseJobDispatcher;
+import com.juancoob.practicegoogleexam.util.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,13 +62,27 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         ButterKnife.bind(this);
         createCountryList();
         setupSharedPreferences();
-        // Init the job scheduler
-        ReminderFirebaseJobDispatcher.scheduleChargingReminder(this);
-        // Init ViewmodelFactory
-        mViewModelFactory = new ViewModelFactory();
-        mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel.class);
+        initJobScheduler();
+        initViewModel();
         setCountries();
         mMainViewModel.countCountryList(this);
+    }
+
+    public void initJobScheduler() {
+        ComponentName componentName = new ComponentName(getPackageName(), ReminderJobService.class.getName());
+        JobInfo.Builder builder = new JobInfo.Builder(Constants.JOB_ID, componentName)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
+                .setRequiresDeviceIdle(true)
+                .setRequiresCharging(true)
+                .setOverrideDeadline(15000);
+        JobInfo jobInfo = builder.build();
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        jobScheduler.schedule(jobInfo);
+    }
+
+    public void initViewModel() {
+        mViewModelFactory = new ViewModelFactory();
+        mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel.class);
     }
 
     // Method to practice number and String sorting
@@ -76,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         //Collections.sort(countries, Country.CountryNameComparator);
         Collections.sort(countries, Country.CountryNumberComparator);
         StringBuilder stringBuilder = new StringBuilder();
-        for(Country country : countries) {
+        for (Country country : countries) {
             //stringBuilder.append(country.getName());
             stringBuilder.append(country.getNumber());
         }
@@ -105,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.i_settings) {
+        if (item.getItemId() == R.id.i_settings) {
             Intent intent = new Intent(this, PreferenceActivity.class);
             startActivity(intent);
             return true;
@@ -116,17 +134,17 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-        if(key.equals(getString(R.string.pref_show_image_key))) {
+        if (key.equals(getString(R.string.pref_show_image_key))) {
             manageImage(sharedPreferences);
-        } else if(key.equals(getString(R.string.pref_show_hint_key))) {
+        } else if (key.equals(getString(R.string.pref_show_hint_key))) {
             manageEditText(sharedPreferences);
-        } else if(key.equals(getString(R.string.pref_change_fab_color_key))) {
+        } else if (key.equals(getString(R.string.pref_change_fab_color_key))) {
             manageFABBackgroundColor(sharedPreferences);
         }
     }
 
     private void manageImage(SharedPreferences sharedPreferences) {
-        if(sharedPreferences.getBoolean(getString(R.string.pref_show_image_key), false)) {
+        if (sharedPreferences.getBoolean(getString(R.string.pref_show_image_key), false)) {
             sampleImageView.setVisibility(View.VISIBLE);
         } else {
             sampleImageView.setVisibility(View.GONE);

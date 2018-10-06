@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class Constants {
 
     // JobScheduler time
+    public static final int JOB_ID = 0;
     public static final String REMINDER_JOB_TAG = "reminderJobTag";
     public static final int REMINDER_INTERVAL_MINUTES = 15;
     public static final int REMINDER_INTERVAL_SECONDS = (int) TimeUnit.MINUTES.toSeconds(REMINDER_INTERVAL_MINUTES);
