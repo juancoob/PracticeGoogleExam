@@ -19,9 +19,12 @@ import android.widget.TextView;
 import com.juancoob.practicegoogleexam.R;
 import com.juancoob.practicegoogleexam.ViewModel.MainViewModel;
 import com.juancoob.practicegoogleexam.ViewModel.ViewModelFactory;
+import com.juancoob.practicegoogleexam.data.Country;
 import com.juancoob.practicegoogleexam.ui.custom.EditTextWithClear;
 import com.juancoob.practicegoogleexam.util.ReminderFirebaseJobDispatcher;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @BindView(R.id.tv_countries_number)
     public TextView countriesNumberTextView;
 
+    @BindView(R.id.tv_test_list)
+    public TextView testListTextView;
+
     private ViewModelFactory mViewModelFactory;
     private MainViewModel mMainViewModel;
 
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        createCountryList();
         setupSharedPreferences();
         // Init the job scheduler
         ReminderFirebaseJobDispatcher.scheduleChargingReminder(this);
@@ -58,6 +65,22 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel.class);
         setCountries();
         mMainViewModel.countCountryList(this);
+    }
+
+    // Method to practice number and String sorting
+    private void createCountryList() {
+        List<Country> countries = new ArrayList<>();
+        countries.add(new Country("Spain", 2));
+        countries.add(new Country("France", 1));
+        countries.add(new Country("Portugal", 0));
+        //Collections.sort(countries, Country.CountryNameComparator);
+        Collections.sort(countries, Country.CountryNumberComparator);
+        StringBuilder stringBuilder = new StringBuilder();
+        for(Country country : countries) {
+            //stringBuilder.append(country.getName());
+            stringBuilder.append(country.getNumber());
+        }
+        testListTextView.setText(stringBuilder.toString());
     }
 
     public void setupSharedPreferences() {
